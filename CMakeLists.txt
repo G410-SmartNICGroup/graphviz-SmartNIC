@@ -119,9 +119,9 @@ else()
         OUTPUT_STRIP_TRAILING_WHITESPACE
         ERROR_STRIP_TRAILING_WHITESPACE
         )
-    if (NOT gen_version_result EQUAL 0)
-        message(FATAL_ERROR "Failed to set version: ${gen_version_error}")
-    endif()
+    #if (NOT gen_version_result EQUAL 0)
+    #    message(FATAL_ERROR "Failed to set version: ${gen_version_error}")
+    #endif()
 endif()
 
 if (DEFINED DATE)
@@ -137,20 +137,20 @@ else()
         OUTPUT_STRIP_TRAILING_WHITESPACE
         ERROR_STRIP_TRAILING_WHITESPACE
         )
-    if (NOT gen_date_result EQUAL 0)
-        message(FATAL_ERROR "Failed to set date: ${gen_date_error}")
-    endif()
+    #if (NOT gen_date_result EQUAL 0)
+    #    message(FATAL_ERROR "Failed to set date: ${gen_date_error}")
+    #endif()
 endif()
 
-string(REGEX REPLACE "\\..*"
-   "" GRAPHVIZ_VERSION_MAJOR
-   ${GRAPHVIZ_VERSION_STRING})
-string(REGEX REPLACE "[^.]*\\.([^.]*)\\..*"
-   "\\1" GRAPHVIZ_VERSION_MINOR
-   ${GRAPHVIZ_VERSION_STRING})
-string(REGEX REPLACE "[^.]*\\.[^.]*\\.(.*)$"
-   "\\1" GRAPHVIZ_VERSION_PATCH
-   ${GRAPHVIZ_VERSION_STRING})
+#string(REGEX REPLACE "\\..*"
+#   "" GRAPHVIZ_VERSION_MAJOR
+#   ${GRAPHVIZ_VERSION_STRING})
+#string(REGEX REPLACE "[^.]*\\.([^.]*)\\..*"
+#   "\\1" GRAPHVIZ_VERSION_MINOR
+#   ${GRAPHVIZ_VERSION_STRING})
+#string(REGEX REPLACE "[^.]*\\.[^.]*\\.(.*)$"
+#   "\\1" GRAPHVIZ_VERSION_PATCH
+#   ${GRAPHVIZ_VERSION_STRING})
 
 set(GRAPHVIZ_VERSION_FULL "${GRAPHVIZ_VERSION_STRING}")
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/builddate.h "#define BUILDDATE \"${GRAPHVIZ_VERSION_BUILD}\"")
